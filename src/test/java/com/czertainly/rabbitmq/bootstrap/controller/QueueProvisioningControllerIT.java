@@ -19,9 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Import(TestcontainersConfiguration.class)
 @TestPropertySource(properties = {
         "app.security.api-key-enabled=true",
-        "app.security.api-key=" + QueueControllerIT.API_KEY
+        "app.security.api-key=" + QueueProvisioningControllerIT.API_KEY
 })
-class QueueControllerIT {
+class QueueProvisioningControllerIT {
 
     public static final String API_KEY = "test-api-key";
 

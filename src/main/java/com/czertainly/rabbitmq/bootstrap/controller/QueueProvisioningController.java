@@ -2,29 +2,29 @@ package com.czertainly.rabbitmq.bootstrap.controller;
 
 import com.czertainly.rabbitmq.bootstrap.api.QueueProvisioningApi;
 import com.czertainly.rabbitmq.bootstrap.model.QueueRequest;
-import com.czertainly.rabbitmq.bootstrap.service.QueueService;
+import com.czertainly.rabbitmq.bootstrap.service.QueueProvisioningService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class QueueController implements QueueProvisioningApi {
+public class QueueProvisioningController implements QueueProvisioningApi {
 
-    private final QueueService queueService;
+    private final QueueProvisioningService queueProvisioningService;
 
-    public QueueController(QueueService queueService) {
-        this.queueService = queueService;
+    public QueueProvisioningController(QueueProvisioningService queueProvisioningService) {
+        this.queueProvisioningService = queueProvisioningService;
     }
 
     @Override
     public ResponseEntity<Void> provisionQueue(QueueRequest queueRequest) {
-        queueService.provisionQueue(queueRequest);
+        queueProvisioningService.provisionQueue(queueRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Override
     public ResponseEntity<Void> deleteQueue(String name) {
-        queueService.deleteQueue(name);
+        queueProvisioningService.deleteQueue(name);
         return ResponseEntity.noContent().build();
     }
 }
